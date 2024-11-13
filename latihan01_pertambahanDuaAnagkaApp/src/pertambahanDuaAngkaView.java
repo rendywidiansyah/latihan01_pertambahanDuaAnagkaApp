@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +17,53 @@ public class pertambahanDuaAngkaView extends javax.swing.JFrame {
      */
     public pertambahanDuaAngkaView() {
         initComponents();
+        
+        // Menambahkan FocusListener pada jTextFieldangka1 untuk membersihkan saat mendapatkan fokus
+jTextFieldangka1.addFocusListener(new java.awt.event.FocusAdapter() {
+    public void focusGained(java.awt.event.FocusEvent evt) {
+        jTextFieldangka1.setText(""); // Mengosongkan teks ketika mendapat fokus
+    }
+});
+
+// Menambahkan FocusListener pada jTextFieldangka2 untuk membersihkan saat mendapatkan fokus
+jTextFieldangka2.addFocusListener(new java.awt.event.FocusAdapter() {
+    public void focusGained(java.awt.event.FocusEvent evt) {
+        jTextFieldangka2.setText(""); // Mengosongkan teks ketika mendapat fokus
+    }
+});
+
+// Menambahkan FocusListener pada jTextFieldhasil untuk membersihkan saat mendapatkan fokus
+jTextFieldhasil.addFocusListener(new java.awt.event.FocusAdapter() {
+    public void focusGained(java.awt.event.FocusEvent evt) {
+        jTextFieldhasil.setText(""); // Mengosongkan teks ketika mendapat fokus
+    }
+});
+
+        
+   // Membatasi input hanya angka pada jTextFieldangka1 dengan pesan error
+jTextFieldangka1.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Mengabaikan karakter non-angka
+            javax.swing.JOptionPane.showMessageDialog(null, "Masukkan hanya angka!", "Error Input", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+});
+
+// Membatasi input hanya angka pada jTextFieldangka2 dengan pesan error
+jTextFieldangka2.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Mengabaikan karakter non-angka
+            javax.swing.JOptionPane.showMessageDialog(null, "Masukkan hanya angka!", "Error Input", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+});
+
+        
+        
     }
 
     /**
